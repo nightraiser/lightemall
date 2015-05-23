@@ -4,10 +4,19 @@
 	<title>Light'em all</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 	<style type="text/css">
+	@font-face {
+    font-family: mainfont;
+    src: url(circula-medium.otf);
+}
 	body
 	{
 		background: #2c3e50;
 		color: white;
+		font-family: mainfont;
+	}
+	h1
+	{
+		font-family: mainfont;
 	}
 	h2
 	{
@@ -24,12 +33,13 @@
 		border-color: white;
 
 	}
+	
 	</style>
 <script type="text/javascript">
 	function getset () {
 		var h = document.getElementById("heading");
 		h.style.fontSize=window.innerWidth/8+"px";
-		h.style.marginTop=window.innerHeight/3+"px";
+		h.style.marginTop=window.innerHeight/15+"px";
 	}
 
 
@@ -47,12 +57,12 @@
 </div>
 </div>
 </div>
-<br><br><br><br><br><br>
+<br><br><br>
 <div class="row">
 <div class="col-md-12">
 <div class="container">
 <center>
-	<hr><br><br><br>
+	<hr><br>
 <a href="game.html" class="btn btn-success btn-lg"><h2>Go to Game</h2></a>
 <br>
 <br><br>

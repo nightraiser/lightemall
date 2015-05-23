@@ -4,19 +4,24 @@
 	<title>Light'em all</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 	<style type="text/css">
+	@font-face {
+    font-family: mainfont;
+    src: url(circula-medium.otf);
+}
 	body
 	{
-		background: black;
+		background: #2c3e50;
+		font-family: mainfont;
 	}
 	td
 	{
 		background: white;
-		border:5px solid black;
+		border:5px solid #2c3e50;
 		
 	}
 	table
 	{
-		background: black;
+		background: #2c3e50;
 	}
 	.yellow
 	{
@@ -167,16 +172,14 @@ function restart()
 </div>
 </div><br><br>
 <div class="row">
-<div class="col-md-12 ">
+<div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
 <div class="panel panel-danger">
 <div class="panel-heading"><center><h1>Clicks <span id="num">0</span></h1></center></div>
 	
 </div>
 </div>
-</div>
 
-<div class="row">
-<div class="col-md-12 ">
+<div class="col-md-6 col-sm-6  col-lg-6 col-xs-6">
 <div class="panel panel-success" onclick="restart();">
 <div class="panel-heading"><center><h1>RESTART</h1></center></div>
 	
