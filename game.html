@@ -46,6 +46,7 @@
 	</style>
 <script type="text/javascript">
 var clicks = 0;
+var my_media=null;
 columns1 = new Array(5);      
 columns2 = new Array(5);   
 columns3 = new Array(5);
@@ -71,7 +72,7 @@ window.onload=function ()
 {
 	
 	var table = document.getElementById("main");
-	table.style.marginTop=window.innerHeight/15+"px";
+	table.style.marginTop=window.innerHeight/35+"px";
 	for (var i = 0;i<5;i++) 
 	{
 		var row = table.insertRow(i);
@@ -80,7 +81,7 @@ window.onload=function ()
 			var cell = row.insertCell(j);
 			cell.id=i+""+j;
 			cell.setAttribute("onclick","check(this)");
-			cell.style.height=window.innerHeight/7+"px";
+			cell.style.height=window.innerHeight/6+"px";
 			cell.style.width=window.innerWidth/5+"px";
 
 		}
@@ -90,18 +91,42 @@ window.onload=function ()
 
 function check(cell) 
 {
+	var src="button-3.mp3";
 	clicks++;
+	 // my_media = new Media(src, onSuccess, onError);
+	 // my_media.play();
+
 	document.getElementById("num").innerHTML=clicks;
 	var r = parseInt(cell.id.charAt(0));
 	var c = parseInt(cell.id.charAt(1));
-	cell.style.background=plot(r,c);
+	var current = plot(r,c);
+	cell.style.background=current;
+	if(current=="yellow")
+	{
+	cell.innerHTML='<center><img src="light-bulb-7" height='+window.innerHeight/10+'px height='+window.innerWidth/8+'px></center>';
+	}
+	else
+	{
+		cell.innerHTML="";
+	}
+
 		if((c+1)<5)
 		{
 			var str = r.toString()+""+(c+1).toString();
 			
 			var d = document.getElementById(str);
+
             	var color = plot(r,c+1);
 			d.style.background=color;
+			if(color=="yellow")
+				{
+				d.innerHTML='<center><img src="http://simpleicon.com/wp-content/uploads/light-bulb-7.svg" height='+window.innerHeight/10+'px height='+window.innerWidth/8+'px></center>';
+				}
+				else
+				{
+					d.innerHTML="";
+				}
+
 
 
 		}
@@ -112,6 +137,14 @@ function check(cell)
 			var d = document.getElementById(str);
 			var color = plot(r,c-1);
 			d.style.background=color;
+			if(color=="yellow")
+				{
+				d.innerHTML='<center><img src="http://simpleicon.com/wp-content/uploads/light-bulb-7.svg" height='+window.innerHeight/10+'px height='+window.innerWidth/8+'px></center>';
+				}
+				else
+				{
+					d.innerHTML="";
+				}
 
 		}
 		/////////roow
@@ -122,6 +155,14 @@ function check(cell)
 			var d = document.getElementById(str);
 			var color  = plot(r+1,c);
 			d.style.background=color;
+			if(color=="yellow")
+				{
+				d.innerHTML='<center><img src="http://simpleicon.com/wp-content/uploads/light-bulb-7.svg" height='+window.innerHeight/10+'px height='+window.innerWidth/8+'px></center>';
+				}
+				else
+				{
+		d.innerHTML="";
+				}
 
 		}
 		if((r-1)>=0)
@@ -131,26 +172,39 @@ function check(cell)
 			var d = document.getElementById(str);
 			var color = plot(r-1,c);
 			d.style.background=color;
+			if(color=="yellow")
+				{
+				d.innerHTML='<center><img src="http://simpleicon.com/wp-content/uploads/light-bulb-7.svg" height='+window.innerHeight/10+'px height='+window.innerWidth/8+'px></center>';
+				}
+				else
+				{
+					d.innerHTML="";
+				}
 
 		}
-		
-
 
 
 }
 
 function plot(x,y)
 {
-	if(rows[x][y]==0)
+
+
+		if(rows[x][y]==0)
 	{
 		rows[x][y]=1;
-		return "yellow";
+		
+				return "yellow";
+			
 	}
 	else
 	{
 		rows[x][y]=0;
 		return "white";
 	}
+
+
+	
 
 
 }
@@ -162,7 +216,19 @@ function restart()
 </head>
 <body>
  	
-
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header" >
+       
+          
+          <a class="navbar-brand" href="index.php"><b class="logo">Light'em all</b></a>
+          <a style="margin-top:10px; margin-right:5px;" onclick="restart();" class="pull-right btn btn-success" >Restart</a>
+          <a style="margin-top:10px; margin-right:5px;" class="pull-right btn btn-primary" href="#">Clicks <span id="num">0</span></a>
+        </div>
+       
+      </div>
+    </div>
+    
 <div class="row">
 <div class="col-md-12">
 <table id="main">
@@ -171,20 +237,7 @@ function restart()
 
 </div>
 </div><br><br>
-<div class="row">
-<div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
-<div class="panel panel-danger">
-<div class="panel-heading"><center><h1>Clicks <span id="num">0</span></h1></center></div>
-	
-</div>
-</div>
 
-<div class="col-md-6 col-sm-6  col-lg-6 col-xs-6">
-<div class="panel panel-success" onclick="restart();">
-<div class="panel-heading"><center><h1>RESTART</h1></center></div>
-	
-</div>
-</div>
 </div>
 </body>
 </html>
